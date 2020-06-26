@@ -1,0 +1,85 @@
+- shell: whoami
+  register: result
+
+- debug:
+    var: result
+
+- name: Adds neovim ppa repository
+  become: true
+  become_user: root
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+
+- name: Adds telegram ppa repository
+  become: true
+  become_user: root
+  apt_repository:
+    repo: ppa:atareao/telegram
+
+- name: Adds docker ppa key
+  become: true
+  become_user: root
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+
+- name: Adds docker ppa repository
+  become: true
+  become_user: root
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+
+- name: Add Erlang Solutions repo
+  become: true
+  become_user: root
+  apt:
+    deb: https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
+
+- name: Install packages
+  become: true
+  become_user: root
+  apt:
+    name: 
+      - git
+      - zsh
+      - fzy
+      - silversearcher-ag
+      - rbenv
+      - neovim
+      - tmux
+      - tmate
+      - telegram
+      - fonts-hack-ttf
+      - silversearcher-ag
+      - esl-erlang
+      - elixir
+      - rbenv
+      - build-essential
+      - python-dev
+      - python-pip
+      - python3-dev
+      - python3-pip
+      - postgresql-client
+      - dconf-cli
+      - net-tools
+
+- name: Install docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.26.0/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: '555'
+
+- name: Create docker user
+  become: true
+  become_user: root
+  user: name=docker group=docker
+
+- name: Adds slack
+  become: true
+  become_user: root
+  apt:
+    deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.3.2-amd64.deb
+
+- name: Adds oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: ~/.oh-my-zsh
