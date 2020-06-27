@@ -3,6 +3,12 @@
   become_user: root
   apt_repository:
     repo: ppa:neovim-ppa/stable
+    
+- name: Adds keepass2 ppa repository
+  become: true
+  become_user: root
+  apt_repository:
+    repo: ppa:jtaylor/keepass
 
 - name: Adds telegram ppa repository
   become: true
@@ -51,6 +57,7 @@
       - postgresql-client
       - dconf-cli
       - net-tools
+      - keepass2
       # - fzf removing cause it is not available on apt repo for ubuntu 18.04
       # rbenv dependencies
       - autoconf
@@ -98,6 +105,12 @@
   become_user: root
   apt:
     deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.3.2-amd64.deb
+
+- name: Adds dropbox
+  become: true
+  become_user: root
+  apt:
+    deb: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb
 
 - name: Adds oh-my-zsh
   git:
