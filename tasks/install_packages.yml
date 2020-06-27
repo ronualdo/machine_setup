@@ -76,6 +76,12 @@
     repo: https://github.com/rbenv/rbenv-default-gems.git
     dest: ~/.rbenv/plugins/rbenv-default-gems
 
+- name: Install neovim-remote
+  command: pip3 install neovim-remote
+
+- name: Install psutil (ansible dconf module dep)
+  command: python -m pip install psutil
+
 - name: Install docker-compose
   get_url:
     url: https://github.com/docker/compose/releases/download/1.26.0/docker-compose-Linux-x86_64
