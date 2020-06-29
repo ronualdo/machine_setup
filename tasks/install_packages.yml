@@ -28,6 +28,12 @@
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
 
+- name: Adds linux uprising repository (Java)
+  become: true
+  become_user: root
+  apt_repository:
+    repo: ppa:linuxuprising/java
+
 - name: Add Erlang Solutions repo
   become: true
   become_user: root
@@ -58,6 +64,7 @@
       - dconf-cli
       - net-tools
       - keepass2
+      - software-properties-common
       # - fzf removing cause it is not available on apt repo for ubuntu 18.04
       # rbenv dependencies
       - autoconf
@@ -67,6 +74,23 @@
       - libreadline6-dev
       - zlib1g-dev
       - libncurses5-dev
+
+- name: Sets license for java
+  become: true
+  become_user: root
+  debconf:
+    name: oracle-java14-installer
+    question: shared/accepted-oracle-license-v1-2
+    value: 'true'
+    vtype: select
+
+- name: Install java
+  become: true
+  become_user: root
+  apt:
+    name:
+      - oracle-java14-installer
+    force: true
 
 - name: Install rbenv
   git:
