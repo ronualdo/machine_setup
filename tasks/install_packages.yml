@@ -75,8 +75,13 @@
       - zlib1g-dev
       - libncurses5-dev
 
+- name: Check rustup is present
+  command: rustup --version
+  register: result
+
 - name: Install rust
   shell: curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | bash -s -- -y
+  when: result is failed
 
 - name: Sets license for java
   become: true
