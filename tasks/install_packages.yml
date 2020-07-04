@@ -75,6 +75,9 @@
       - zlib1g-dev
       - libncurses5-dev
 
+- name: Install rust
+  shell: curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | bash -s -- -y
+
 - name: Sets license for java
   become: true
   become_user: root
@@ -107,11 +110,30 @@
     repo: https://github.com/rbenv/rbenv-default-gems.git
     dest: ~/.rbenv/plugins/rbenv-default-gems
 
+
+- name: Check neovim-remote is present
+  command: pip3 show neovim-remote
+  register: result
+
 - name: Install neovim-remote
   command: pip3 install neovim-remote
+  when: result is failed
+
+- name: Check psutil is present
+  command: python -m pip show psutil 
+  register: result
 
 - name: Install psutil (ansible dconf module dep)
   command: python -m pip install psutil
+  when: result is failed
+
+- name: Check mspack is present
+  command: pip show msgpack
+  register: result
+
+- name: Install msgpack (deoplete dependency)
+  command: pip install msgpack
+  when: result is failed
 
 - name: Install docker-compose
   get_url:
