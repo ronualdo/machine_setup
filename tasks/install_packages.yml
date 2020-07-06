@@ -146,6 +146,15 @@
     dest: /usr/local/bin/docker-compose
     mode: '555'
 
+- name: Install ngrok
+  become: true
+  become_user: root
+  unarchive:
+    src: https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: '555'
+
 - name: Create docker user
   become: true
   become_user: root

@@ -88,6 +88,14 @@
     name: "{{ user }}"
     shell: /bin/zsh
 
+- name: Adds user to docker group
+  become: yes
+  become_user: root
+  user:
+    name: "{{ user }}"
+    append: yes
+    groups: 'docker'
+
 - name: Sets dock fixed
   dconf:
     key: /org/gnome/shell/extensions/dash-to-dock/dock-fixed
