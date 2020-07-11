@@ -100,3 +100,15 @@
   dconf:
     key: /org/gnome/shell/extensions/dash-to-dock/dock-fixed
     value: "false"
+
+- sysctl:
+    name: fs.inotify.max_user_watches
+    value: '1048576'
+  become: yes
+  become_user: root
+
+- sysctl:
+    name: vm.max_map_count
+    value: '262144'
+  become: yes
+  become_user: root
