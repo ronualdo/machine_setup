@@ -40,6 +40,17 @@
   apt:
     deb: https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
 
+- name: Check nodejs is present
+  command: nodejs --version
+  ignore_errors: yes
+  register: result
+
+- name: Install nodejs PPA
+  become: true
+  become_user: root
+  shell: curl -sL https://deb.nodesource.com/setup_12.x | bash -s -- y
+  when: result is failed
+
 - name: Install packages
   become: true
   become_user: root
@@ -63,6 +74,7 @@
       - postgresql-client
       - dconf-cli
       - net-tools
+      - nodejs
       - keepass2
       - software-properties-common
       # - fzf removing cause it is not available on apt repo for ubuntu 18.04
@@ -82,6 +94,7 @@
 - name: Install rust
   shell: curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | bash -s -- -y
   when: result is failed
+
 
 - name: Sets license for java
   become: true
@@ -164,7 +177,7 @@
   become: true
   become_user: root
   apt:
-    deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.3.2-amd64.deb
+    deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.7.0-amd64.deb
 
 - name: Adds dropbox
   become: true
