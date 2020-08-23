@@ -77,6 +77,7 @@
       - nodejs
       - keepass2
       - software-properties-common
+      - httpie
       # - fzf removing cause it is not available on apt repo for ubuntu 18.04
       # rbenv dependencies
       - autoconf
@@ -173,11 +174,17 @@
   become_user: root
   user: name=docker group=docker
 
+- name: Check slack is present
+  command: slack --version
+  ignore_errors: yes
+  register: result
+
 - name: Adds slack
   become: true
   become_user: root
   apt:
     deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.7.0-amd64.deb
+  when: result is failed
 
 - name: Adds dropbox
   become: true
