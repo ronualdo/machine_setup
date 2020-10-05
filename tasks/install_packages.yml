@@ -40,6 +40,7 @@
   apt:
     deb: https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
 
+# change to install using nvm
 - name: Check nodejs is present
   command: nodejs --version
   ignore_errors: yes
