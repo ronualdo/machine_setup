@@ -113,19 +113,19 @@
   when: result is failed
 
 - name: Check psutil is present
-  command: python -m pip3 show psutil 
+  command: python -m pip show psutil 
   register: result
 
 - name: Install psutil (ansible dconf module dep)
-  command: python -m pip3 install psutil
+  command: python -m pip install psutil
   when: result is failed
 
 - name: Check mspack is present
-  command: pip3 show msgpack
+  command: pip show msgpack
   register: result
 
 - name: Install msgpack (deoplete dependency)
-  command: pip3 install msgpack
+  command: pip install msgpack
   when: result is failed
 
 - name: Install docker-compose
