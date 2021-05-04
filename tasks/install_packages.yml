@@ -145,6 +145,11 @@
     remote_src: yes
     mode: '555'
 
+- name: Create docker gorup
+  group:
+    name: docker
+    state: present
+
 - name: Create docker user
   become: true
   become_user: root
