@@ -113,7 +113,7 @@
   when: result is failed
 
 - name: Check psutil is present
-  command: python -m pip show psutil 
+  command: pip3 show psutil 
   register: result
 
 - name: Install psutil (ansible dconf module dep)
