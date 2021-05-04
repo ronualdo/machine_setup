@@ -121,11 +121,11 @@
   when: result is failed
 
 - name: Check mspack is present
-  command: pip show msgpack
+  command: pip3 show msgpack
   register: result
 
 - name: Install msgpack (deoplete dependency)
-  command: pip install msgpack
+  command: pip3 install msgpack
   when: result is failed
 
 - name: Install docker-compose
