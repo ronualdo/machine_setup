@@ -88,23 +88,6 @@
       - zlib1g-dev
       - libncurses5-dev
 
-- name: Sets license for java
-  become: true
-  become_user: root
-  debconf:
-    name: oracle-java14-installer
-    question: shared/accepted-oracle-license-v1-2
-    value: 'true'
-    vtype: select
-
-- name: Install java
-  become: true
-  become_user: root
-  apt:
-    name:
-      - oracle-java14-installer
-    force: true
-
 - name: Install rbenv
   git:
    repo: https://github.com/rbenv/rbenv.git
