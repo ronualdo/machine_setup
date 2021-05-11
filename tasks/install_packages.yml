@@ -74,7 +74,6 @@
       - postgresql-client
       - dconf-cli
       - net-tools
-      - nodejs
       - keepass2
       - software-properties-common
       - httpie
