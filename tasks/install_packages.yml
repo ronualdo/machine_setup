@@ -51,7 +51,6 @@
   become_user: root
   shell: curl -sL https://deb.nodesource.com/setup_12.x | bash -s -- y
   when: result is failed
-  warn: false
 
 - name: Install docker-compose
   become: true
