@@ -72,8 +72,8 @@
       - tmate
       - telegram
       - fonts-hack-ttf
-      - silversearcher-ag
       - esl-erlang
+      - ripgrep
       - elixir
       - build-essential
       - python-dev
