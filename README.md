@@ -13,7 +13,7 @@ information. To use it, make sure to create this file in home
 folder
 
 ```
-touch ~/.setup_vars
+touch ~/.setup_vars.yml
 ```
 
 And fill it with the following information:
