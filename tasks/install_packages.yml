@@ -116,6 +116,7 @@
 
 - name: Check neovim-remote is present
   command: pip3 show neovim-remote
+  ignore_errors: yes
   register: result
 
 - name: Install neovim-remote
@@ -124,6 +125,7 @@
 
 - name: Check psutil is present
   command: pip3 show psutil 
+  ignore_errors: yes
   register: result
 
 - name: Install psutil (ansible dconf module dep)
@@ -132,6 +134,7 @@
 
 - name: Check mspack is present
   command: pip3 show msgpack
+  ignore_errors: yes
   register: result
 
 - name: Install msgpack (deoplete dependency)
