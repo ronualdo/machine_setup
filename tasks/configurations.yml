@@ -7,7 +7,7 @@
 
 - name: Retrieving configuration
   git:
-    repo: git@github.com:ronualdo/dotfiles.git
+    repo: https://github.com/ronualdo/dotfiles.git
     dest: "{{ workspace_folder }}/dotfiles"
 
 - name: Sets up git
