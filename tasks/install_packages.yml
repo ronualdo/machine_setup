@@ -88,6 +88,7 @@
       - docker-ce
       - libpq-dev
       - python3-pip
+      - curl
 
 
 - name: Install rbenv
