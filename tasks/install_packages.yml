@@ -28,11 +28,11 @@
   apt_repository:
     repo: ppa:linuxuprising/java
 
-- name: Add Erlang Solutions repo
+- name: Adds rabbitmq repository for erlang
   become: true
   become_user: root
-  apt:
-    deb: https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
+  apt_repository:
+    repo: ppa:rabbitmq/rabbitmq-erlang 
 
 # change to install using nvm
 - name: Check nodejs is present
@@ -66,9 +66,10 @@
       - tmate
       - telegram
       - fonts-hack-ttf
-      - esl-erlang
       - ripgrep
       - elixir
+      - erlang-dev
+      - erlang-xmerl
       - build-essential
       - python-dev
       - python3-dev
