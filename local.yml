@@ -9,5 +9,8 @@
       become: true
       become_user: root
   tasks:
-    - include: tasks/install_packages.yml
-    - include: tasks/configurations.yml
+    - name: Include installation tasks
+      include_tasks: tasks/install_packages.yml
+
+    - name: Include configuration tasks
+      include_tasks: tasks/configurations.yml
