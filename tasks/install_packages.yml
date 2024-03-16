@@ -43,7 +43,7 @@
 - name: Install nodejs PPA
   become: true
   become_user: root
-  shell: curl -sL https://deb.nodesource.com/setup_12.x | bash -s -- y
+  shell: curl -sL https://deb.nodesource.com/setup_18.x | bash -s -- y
   when: result is failed
 
 - name: Install docker-compose
