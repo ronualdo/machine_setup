@@ -76,6 +76,7 @@
       - net-tools
       - software-properties-common
       - httpie
+      - nodejs
       # - fzf removing cause it is not available on apt repo for ubuntu 18.04
       # rbenv dependencies
       - autoconf
