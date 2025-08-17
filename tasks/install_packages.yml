@@ -2,7 +2,7 @@
   become: true
   become_user: root
   apt_repository:
-    repo: ppa:neovim-ppa/unstable
+    repo: ppa:neovim-ppa/stable
 
 - name: Adds telegram ppa repository
   become: true
