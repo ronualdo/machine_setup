@@ -106,6 +106,19 @@
     key: /org/gnome/shell/extensions/dash-to-dock/dock-fixed
     value: "false"
 
+- name: Install asdf ruby plugin
+  command: asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+  register: result
+
+- name: Config ruby default gems
+  template:
+    dest: ~/.default-gems
+    mode: 0666
+    src: default-gems
+
+- name: Sets up ruby version
+  command: asdf install ruby 3.4.5
+
 # Not sure if needed
 # - sysctl:
 #     name: fs.inotify.max_user_watches
