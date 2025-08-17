@@ -72,11 +72,11 @@
     version: v0.18.0
 
 - name: Install asdf-nodejs plugin
-  command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  command:  ~/.asdf/bin/asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   register: result
 
 - name: Install nodejs
-  command: asdf install nodejs 22.18.0
+  command: ~/.asdf/bin/asdf install nodejs 22.18.0
   when: result is success
 
 - name: Check neovim-remote is present
