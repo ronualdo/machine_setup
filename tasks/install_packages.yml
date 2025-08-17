@@ -133,3 +133,22 @@
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh.git
     dest: ~/.oh-my-zsh
+
+- name: Check if kitty is already installed
+  ansible.builtin.command: which kitty
+  register: kitty_check
+  ignore_errors: yes
+  changed_when: false
+
+- name: Download kitty installer
+  ansible.builtin.get_url:
+    url: https://sw.kovidgoyal.net/kitty/installer.sh
+    dest: /tmp/kitty-installer.sh
+    mode: '0755'
+  when: kitty_check.rc != 0
+
+- name: Run kitty installer
+  ansible.builtin.command: sh /tmp/kitty-installer.sh
+  args:
+    chdir: /tmp
+  when: kitty_check.rc != 0
