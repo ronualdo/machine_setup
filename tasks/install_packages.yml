@@ -137,14 +137,7 @@
     deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.7.0-amd64.deb
   when: result is failed
 
-- name: Adds oh-my-zsh
+- name: Adds oh-my-zs
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh.git
     dest: ~/.oh-my-zsh
-
-- name: Adds heroku cli
-  become: true
-  become_user: root
-  snap:
-    name: heroku
-    classic: true
