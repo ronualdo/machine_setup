@@ -101,12 +101,6 @@
     key: /org/gnome/shell/extensions/dash-to-dock/dock-fixed
     value: "false"
 
-- name: Config rbenv-default-gems
-  template:
-    dest: ~/.rbenv/default-gems
-    mode: 0666
-    src: default-gems
-
 - sysctl:
     name: fs.inotify.max_user_watches
     value: '1048576'
