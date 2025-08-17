@@ -65,6 +65,25 @@
       - software-properties-common
       - httpie
       - fzf
+      # asdf-nodejs pluging deps
+      - dirmngr
+      - gpg
+      - curl
+      - gawk
+
+- name: Install asdf
+  ansible.builtin.git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: ~/.asdf
+    version: v0.18.0
+
+- name: Install asdf-nodejs plugin
+  command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  register: result
+
+- name: Install nodejs
+  command: asdf install nodejs 22.18.0
+  when: result is success
 
 - name: Check neovim-remote is present
   command: pip3 show neovim-remote
