@@ -34,18 +34,6 @@
   apt_repository:
     repo: ppa:rabbitmq/rabbitmq-erlang 
 
-# change to install using nvm
-- name: Check nodejs is present
-  command: nodejs --version
-  ignore_errors: yes
-  register: result
-
-- name: Install nodejs PPA
-  become: true
-  become_user: root
-  shell: curl -sL https://deb.nodesource.com/setup_18.x | bash -s -- y
-  when: result is failed
-
 - name: Install docker-compose
   become: true
   become_user: root
@@ -76,8 +64,7 @@
       - net-tools
       - software-properties-common
       - httpie
-      - nodejs
-      # - fzf removing cause it is not available on apt repo for ubuntu 18.04
+      - fzf
       # rbenv dependencies
       - autoconf
       - bison 
