@@ -20,7 +20,7 @@
   become: true
   become_user: root
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu noble stable
 
 - name: Adds linux uprising repository (Java)
   become: true
