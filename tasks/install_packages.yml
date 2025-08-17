@@ -22,12 +22,6 @@
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu noble stable
 
-- name: Adds linux uprising repository (Java)
-  become: true
-  become_user: root
-  apt_repository:
-    repo: ppa:linuxuprising/java
-
 - name: Adds rabbitmq repository for erlang
   become: true
   become_user: root
