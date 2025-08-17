@@ -66,18 +66,16 @@
       - gawk
 
 - name: Install asdf
-  ansible.builtin.git:
-    repo: https://github.com/asdf-vm/asdf.git
-    dest: ~/.asdf
-    version: v0.18.0
+  become: true
+  become_user: root
+  ansible.builtin.unarchive:
+    src: https://github.com/asdf-vm/asdf/releases/download/v0.18.0/asdf-v0.18.0-linux-amd64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
 
 - name: Install asdf-nodejs plugin
-  command:  ~/.asdf/bin/asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   register: result
-
-- name: Install nodejs
-  command: ~/.asdf/bin/asdf install nodejs 22.18.0
-  when: result is success
 
 - name: Check neovim-remote is present
   command: pip3 show neovim-remote
