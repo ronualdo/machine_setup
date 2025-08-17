@@ -59,6 +59,7 @@
       - software-properties-common
       - httpie
       - fzf
+      - python3-psutil
       # asdf-nodejs pluging deps
       - dirmngr
       - gpg
@@ -78,15 +79,6 @@
   register: result
 
 # Commenting this because I'm not sure if I still need that for noble numbat
-# - name: Check psutil is present
-#   command: pip3 show psutil 
-#   ignore_errors: yes
-#   register: result
-# 
-# - name: Install psutil (ansible dconf module dep)
-#   command: python -m pip install psutil
-#   when: result is failed
-# 
 # - name: Check mspack is present
 #   command: pip3 show msgpack
 #   ignore_errors: yes
