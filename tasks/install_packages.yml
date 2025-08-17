@@ -137,12 +137,6 @@
     deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.7.0-amd64.deb
   when: result is failed
 
-- name: Adds dropbox
-  become: true
-  become_user: root
-  apt:
-    deb: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb
-
 - name: Adds oh-my-zsh
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh.git
