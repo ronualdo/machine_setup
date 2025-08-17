@@ -47,6 +47,11 @@
     owner: "{{ user }}"
     force: true
 
+- name: Sets up tmux plugin manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "~/.tmux/plugins/tpm"
+
 - name: Sets up zshrc
   file:
     src: "{{ workspace_folder }}/dotfiles/.zshrc"
