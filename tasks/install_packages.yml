@@ -77,15 +77,6 @@
   command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   register: result
 
-- name: Check neovim-remote is present
-  command: pip3 show neovim-remote
-  ignore_errors: yes
-  register: result
-
-- name: Install neovim-remote
-  command: pip3 install neovim-remote
-  when: result is failed
-
 - name: Check psutil is present
   command: pip3 show psutil 
   ignore_errors: yes
